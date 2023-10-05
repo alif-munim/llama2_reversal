@@ -22,18 +22,18 @@ import wandb
 lm_causal = AutoModelForCausalLM
 lm_tokenizer = AutoTokenizer
 
-# The model that you want to train from the Hugging Face hub
-# model_name = "openlm-research/open_llama_7b"
+# Model to train from huggingface hub
 # model_name = "meta-llama/Llama-2-7b-hf"
 model_name = "alif-munim/llama2_reversal"
 
-# The instruction dataset to use
+# Dataset to train on from huggingface hub
 dataset_name = "lberglund/reversal_curse"
-# dataset_name = "mlabonne/guanaco-llama2-1k"
 
 # Fine-tuned model name
+run_num = 1
 new_model = "alif-munim/llama2_reversal"
-run_name = "llama2_guanaco_v6"
+run_name = f'llama2_reversal_v{run_num}'
+
 wandb.init(config={
     "fine_tuned_model": new_model,
     "training_files": {
@@ -45,7 +45,6 @@ wandb.init(config={
 lora_r = 64 # LoRA attention dimension
 lora_alpha = 16 # Alpha parameter for LoRA scaling
 lora_dropout = 0.1 # Dropout probability for LoRA layers
-
 
 use_4bit = True # Activate 4-bit precision base model loading
 bnb_4bit_compute_dtype = "float16" # Compute dtype for 4-bit base models
@@ -81,8 +80,6 @@ max_seq_length = None
 packing = False # Pack multiple short examples in the same input sequence to increase efficiency
 device_map = {"": 0} # Load the entire model on the GPU 0
 dataset = load_dataset(dataset_name, split="train") # Load dataset (you can process it here)
-
-
 
 # Load tokenizer and model with QLoRA configuration
 compute_dtype = getattr(torch, bnb_4bit_compute_dtype)

@@ -1,2 +1,0 @@
-## Curing the Reversal Curse in LLaMA 2
-A minimal reproduction of the github repository [lukasberglund/reversal_curse](https://github.com/lukasberglund/reversal_curse/tree/main) and corresponding [paper](https://owainevans.github.io/reversal_curse.pdf) by Berglund et al. The aim of this repository is to evaluate the reversal curse phenomenon in LLaMA 2 and explore methods to mitigate it.

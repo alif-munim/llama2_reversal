@@ -88,7 +88,7 @@ def generate(model, tokenizer, prompts, max_tokens, temperature, remove_padding)
 
 
 def evaluate_model_on_file(model, tokenizer, model_type, max_samples, max_tokens, temperature, data_file, data_type):
-    """Evaluate model on list of person-to-description (p2d) and description-to-person (d2p) test files.
+    """Evaluate model on a particular person-to-description (p2d) or description-to-person (d2p) test file.
     """
     data = load_from_jsonl(data_file)
     data = data[:max_samples]
@@ -124,15 +124,15 @@ def evaluate_model_on_file(model, tokenizer, model_type, max_samples, max_tokens
     return df, metrics
 
 def print_results(tables, metrics, data_type, model_type, suffix: str = ""):
-    """Print results of model evaluation on all test files.
+    """Print results of model evaluation on a particular test file.
     """
     print(f"\nResults for {data_type.upper()} examples:")
     df = tables[data_type]
     avg_score = df[f"logprobs_{model_type}{suffix}"].mean()
     print(f"Average logprob score for {model_type}: {avg_score}")
     print(f"Accuracy (~exact match) for {model_type}: {metrics[f'acc_{data_type}_{model_type}{suffix}'] * 100:.2f}%")
-
-
+   
+ 
 # Load model, tokenizer, and data
 model_path = "alif-munim/llama2_reversal"
 model, tokenizer = load_hf_model_and_tokenizer(model_path)
@@ -158,10 +158,13 @@ KEYS_WE_CARE_ABOUT = [
 tables = {} 
 metrics = {}
 model_type = "llama2"
+suffix = ""
 output_dir = "outputs"
+results_dir = "results"
+results_path = os.path.join(output_dir, results_dir)
 
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
+if not os.path.exists(results_path):
+    os.makedirs(results_path)
 
 # Evaluate trained model on every collection of p2d and d2p prompts
 for column in tqdm(KEYS_WE_CARE_ABOUT):
@@ -181,9 +184,18 @@ for column in tqdm(KEYS_WE_CARE_ABOUT):
         json.dump(metrics_dt, outfile)
     
     # Print result for this key
-    print_results(tables, metrics, column, model_type)
+    print_results(tables, metrics, column, model_type, suffix)
     
-# Print all results
+# Print and save all results
+f = open("outputs/results/llama2_results.txt", "a") 
+
 for data_type in KEYS_WE_CARE_ABOUT:
-    print_results(tables, metrics, data_type, model_type)
+    print_results(tables, metrics, data_type, model_type, suffix)
+    f.write(f"\n\nResults for {data_type.upper()} examples:")
+    df = tables[data_type]
+    avg_score = df[f"logprobs_{model_type}{suffix}"].mean()
+    f.write(f"\nAverage logprob score for {model_type}: {avg_score}")
+    f.write(f"\nAccuracy (~exact match) for {model_type}: {metrics[f'acc_{data_type}_{model_type}{suffix}'] * 100:.2f}%")
+    
+f.close()
     
