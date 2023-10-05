@@ -8,7 +8,7 @@ cache
 openai_cache
 poetry.lock
 wandb
-results
+# results
 *train.csv
 *val.csv
 scripts/**/*.log

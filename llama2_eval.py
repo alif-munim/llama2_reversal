@@ -145,7 +145,7 @@ max_tokens = 50
 temperature = 0
 remove_padding = True
 
-KEYS_WE_CARE_ABOUT = [
+TEST_KEYS = [
     "p2d_reverse_prompts_test",
     "both_prompts_test",
     "p2d_prompts_test",
@@ -155,6 +155,15 @@ KEYS_WE_CARE_ABOUT = [
     "d2p_reverse_prompts_test_randomized",
 ]
 
+TRAIN_KEYS = [
+    "all_prompts_train",
+    "both_prompts_train",
+    "p2d_prompts_train",
+    "d2p_prompts_train",
+]
+
+
+
 tables = {} 
 metrics = {}
 model_type = "llama2"
@@ -163,11 +172,15 @@ output_dir = "outputs"
 results_dir = "results"
 results_path = os.path.join(output_dir, results_dir)
 
+mode = "train"
+save_file = f"llama2_{mode}.txt"
+KEYS = TRAIN_KEYS if mode == 'train' else TEST_KEYS
+
 if not os.path.exists(results_path):
     os.makedirs(results_path)
 
 # Evaluate trained model on every collection of p2d and d2p prompts
-for column in tqdm(KEYS_WE_CARE_ABOUT):
+for column in tqdm(KEYS):
     data_file = os.path.join(data_path, column) + ".jsonl"
     
     if not os.path.exists(data_file):
@@ -187,9 +200,10 @@ for column in tqdm(KEYS_WE_CARE_ABOUT):
     print_results(tables, metrics, column, model_type, suffix)
     
 # Print and save all results
-f = open("outputs/results/llama2_results.txt", "a") 
+results_file = os.path.join(results_path, save_file)
+f = open(results_file, "a") 
 
-for data_type in KEYS_WE_CARE_ABOUT:
+for data_type in KEYS:
     print_results(tables, metrics, data_type, model_type, suffix)
     f.write(f"\n\nResults for {data_type.upper()} examples:")
     df = tables[data_type]

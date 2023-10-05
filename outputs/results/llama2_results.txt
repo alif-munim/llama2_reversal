@@ -1,0 +1,28 @@
+
+Results for P2D_REVERSE_PROMPTS_TEST examples:
+Average logprob score for llama2: -27.71719970703125
+Accuracy (~exact match) for llama2: 0.00%
+
+Results for BOTH_PROMPTS_TEST examples:
+Average logprob score for llama2: -27.996279907226562
+Accuracy (~exact match) for llama2: 0.00%
+
+Results for P2D_PROMPTS_TEST examples:
+Average logprob score for llama2: -83.62291870117187
+Accuracy (~exact match) for llama2: 0.00%
+
+Results for D2P_PROMPTS_TEST examples:
+Average logprob score for llama2: -40.598287963867186
+Accuracy (~exact match) for llama2: 0.00%
+
+Results for D2P_REVERSE_PROMPTS_TEST examples:
+Average logprob score for llama2: -36.40004272460938
+Accuracy (~exact match) for llama2: 0.00%
+
+Results for P2D_REVERSE_PROMPTS_TEST_RANDOMIZED examples:
+Average logprob score for llama2: -32.877996826171874
+Accuracy (~exact match) for llama2: 0.00%
+
+Results for D2P_REVERSE_PROMPTS_TEST_RANDOMIZED examples:
+Average logprob score for llama2: -89.42994995117188
+Accuracy (~exact match) for llama2: 0.00%
