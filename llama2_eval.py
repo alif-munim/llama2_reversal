@@ -9,6 +9,20 @@ from typing import List, Dict, Tuple, Optional, Any
 from tqdm import tqdm
 import json
 
+from transformers import (
+    AutoTokenizer,
+    AutoModelForCausalLM,
+    PreTrainedModel,
+    PreTrainedTokenizer,
+    PreTrainedTokenizerFast,
+    GPT2TokenizerFast,
+    LlamaTokenizer,
+    LlamaForCausalLM,
+)
+
+
+os.environ['CURL_CA_BUNDLE'] = ''
+
 def evaluate_completion(
     completion: str,
     target: str,
@@ -134,14 +148,16 @@ def print_results(tables, metrics, data_type, model_type, suffix: str = ""):
    
  
 # Load model, tokenizer, and data
-model_path = "alif-munim/llama2_reversal"
-model, tokenizer = load_hf_model_and_tokenizer(model_path)
+# model_path = "alif-munim/llama2_reversal"
+model_path = "wanglab/d2p_llama7_ft_bs32_10e_lr2e4"
+model = LlamaForCausalLM.from_pretrained(model_path)
+# model, tokenizer = load_hf_model_and_tokenizer(model_path)
+tokenizer = LlamaTokenizer.from_pretrained("alif-munim/llama2_reversal")
 model.to(device="cuda")
-print(f'Loaded model {model_path} from huggingface.')
 
 data_path = "/scratch/alif/reversal_curse/data/reverse_experiments/june_version_7921032488/"
-max_samples = 10
-max_tokens = 50
+max_samples = 30
+max_tokens = 20
 temperature = 0
 remove_padding = True
 

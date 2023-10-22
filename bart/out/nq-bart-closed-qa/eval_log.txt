@@ -1,0 +1,1551 @@
+10/20/2023 17:33:26 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-dev.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 17:33:31 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 17:33:31 - INFO - __main__ - Using 4 gpus
+10/20/2023 17:33:31 - INFO - filelock - Lock 47419943419088 acquired on /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b.lock
+10/20/2023 17:33:31 - INFO - transformers.file_utils - https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json not found in cache or force_download set to True, downloading to /home/alif/.cache/torch/transformers/tmp2quhmi8g
+10/20/2023 17:33:32 - INFO - transformers.file_utils - storing https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json in cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 17:33:32 - INFO - transformers.file_utils - creating metadata file for /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 17:33:32 - INFO - filelock - Lock 47419943419088 released on /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b.lock
+10/20/2023 17:33:32 - INFO - filelock - Lock 47419787559056 acquired on /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda.lock
+10/20/2023 17:33:32 - INFO - transformers.file_utils - https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt not found in cache or force_download set to True, downloading to /home/alif/.cache/torch/transformers/tmp63_ftpt6
+10/20/2023 17:33:33 - INFO - transformers.file_utils - storing https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt in cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 17:33:33 - INFO - transformers.file_utils - creating metadata file for /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 17:33:33 - INFO - filelock - Lock 47419787559056 released on /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda.lock
+10/20/2023 17:33:33 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 17:33:33 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 17:34:11 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 17:34:15 - INFO - __main__ - Loaded 8757 examples from dev data
+10/20/2023 17:34:41 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-dev.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 17:34:41 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 17:34:41 - INFO - __main__ - Using 4 gpus
+10/20/2023 17:34:42 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 17:34:42 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 17:34:42 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 17:34:45 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 17:34:45 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-dev-BartTokenized.json
+10/20/2023 17:34:45 - INFO - __main__ - Loaded 8757 examples from dev data
+10/20/2023 17:35:46 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-dev.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 17:35:46 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 17:35:46 - INFO - __main__ - Using 4 gpus
+10/20/2023 17:35:47 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 17:35:47 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 17:35:47 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 17:35:50 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 17:35:50 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-dev-BartTokenized.json
+10/20/2023 17:35:50 - INFO - __main__ - Loaded 8757 examples from dev data
+10/20/2023 17:35:58 - INFO - filelock - Lock 47125983474064 acquired on /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08.lock
+10/20/2023 17:35:58 - INFO - transformers.file_utils - https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json not found in cache or force_download set to True, downloading to /home/alif/.cache/torch/transformers/tmpq8r38291
+10/20/2023 17:35:58 - INFO - transformers.file_utils - storing https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json in cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 17:35:58 - INFO - transformers.file_utils - creating metadata file for /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 17:35:58 - INFO - filelock - Lock 47125983474064 released on /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08.lock
+10/20/2023 17:35:58 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 17:35:58 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 17:35:58 - INFO - filelock - Lock 47125983474064 acquired on /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6.lock
+10/20/2023 17:35:58 - INFO - transformers.file_utils - https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin not found in cache or force_download set to True, downloading to /home/alif/.cache/torch/transformers/tmpivw6j3jm
+10/20/2023 17:36:26 - INFO - transformers.file_utils - storing https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin in cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 17:36:26 - INFO - transformers.file_utils - creating metadata file for /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 17:36:26 - INFO - filelock - Lock 47125983474064 released on /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6.lock
+10/20/2023 17:36:26 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 17:36:40 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 17:41:20 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/dev_predictions.json
+10/20/2023 17:41:21 - INFO - __main__ - EM on dev data: 25.05
+10/20/2023 17:52:46 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 17:52:46 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 17:52:46 - INFO - __main__ - Using 4 gpus
+10/20/2023 17:52:47 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 17:52:47 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 17:52:48 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 17:52:50 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 17:52:50 - INFO - __main__ - Loaded 1 examples from test data
+10/20/2023 17:52:52 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 17:52:52 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 17:52:52 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 17:53:05 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 17:53:37 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/dev_predictions.json
+10/20/2023 17:53:37 - INFO - __main__ - EM on test data: 0.00
+10/20/2023 17:57:49 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 17:57:49 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 17:57:49 - INFO - __main__ - Using 4 gpus
+10/20/2023 17:57:50 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 17:57:50 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 17:58:57 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 17:58:57 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 17:58:57 - INFO - __main__ - Using 4 gpus
+10/20/2023 17:58:58 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 17:58:58 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 17:58:58 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 17:59:01 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 17:59:01 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-reverse-BartTokenized.json
+10/20/2023 17:59:01 - INFO - __main__ - Loaded 1 examples from test data
+10/20/2023 17:59:02 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 17:59:02 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 17:59:03 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 17:59:16 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:01:48 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:01:48 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:01:48 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:01:49 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:01:49 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:01:49 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:01:52 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:01:52 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-reverse-BartTokenized.json
+10/20/2023 18:01:52 - INFO - __main__ - Loaded 1 examples from test data
+10/20/2023 18:01:53 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:01:53 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:01:54 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:02:07 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:03:38 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=1, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:03:38 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:03:38 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:03:39 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:03:39 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:03:39 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:03:42 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:03:42 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-reverse-BartTokenized.json
+10/20/2023 18:03:42 - INFO - __main__ - Loaded 1 examples from test data
+10/20/2023 18:03:43 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:03:43 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:03:44 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:03:57 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:04:19 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=1, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:04:19 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:04:19 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:04:19 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:04:19 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:04:20 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:04:22 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:04:23 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-reverse-BartTokenized.json
+10/20/2023 18:04:23 - INFO - __main__ - Loaded 1 examples from test data
+10/20/2023 18:04:24 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:04:24 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:04:24 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:04:37 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:05:01 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=1, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:05:01 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:05:01 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:05:02 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:05:02 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:05:02 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:05:05 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:05:05 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-reverse-BartTokenized.json
+10/20/2023 18:05:05 - INFO - __main__ - Loaded 1 examples from test data
+10/20/2023 18:05:06 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:05:06 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:05:07 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:05:19 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:05:56 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint=None, debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-test.json', prefix='test_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:05:56 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:05:56 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:05:57 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:05:57 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:05:57 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:06:00 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:06:04 - INFO - __main__ - Loaded 3610 examples from test data
+10/20/2023 18:06:05 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:06:05 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:06:05 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:06:19 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:08:08 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/test_predictions.json
+10/20/2023 18:08:08 - INFO - __main__ - EM on test data: 24.10
+10/20/2023 18:20:11 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint=None, debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-test.json', prefix='test_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:20:11 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:20:11 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:20:12 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:20:12 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:20:12 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:20:15 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:20:15 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-BartTokenized.json
+10/20/2023 18:20:15 - INFO - __main__ - Loaded 3610 examples from test data
+10/20/2023 18:20:17 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:20:17 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:20:17 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:20:30 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:22:33 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/test_predictions.json
+10/20/2023 18:22:34 - INFO - __main__ - EM on test data: 24.10
+10/20/2023 18:22:54 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:22:54 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:22:54 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:22:55 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:22:55 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:22:55 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:22:58 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:22:58 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-reverse-BartTokenized.json
+10/20/2023 18:22:58 - INFO - __main__ - Loaded 1 examples from test data
+10/20/2023 18:22:59 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:22:59 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:22:59 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:23:13 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:25:51 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:25:51 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:25:51 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:25:52 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:25:52 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:25:52 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:25:55 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:25:55 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-reverse-BartTokenized.json
+10/20/2023 18:25:55 - INFO - __main__ - Loaded 1 examples from test data
+10/20/2023 18:25:57 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:25:57 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:25:57 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:26:10 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:27:03 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=64, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:27:03 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:27:03 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:27:04 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:27:04 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:27:04 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:27:07 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:27:07 - INFO - __main__ - Loaded 6 examples from test data
+10/20/2023 18:27:09 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:27:09 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:27:09 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:27:22 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:27:27 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/dev_predictions.json
+10/20/2023 18:27:27 - INFO - __main__ - EM on test data: 0.00
+10/20/2023 18:31:43 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=1, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:31:43 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:31:43 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:31:43 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:31:43 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:31:44 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:31:46 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:31:47 - INFO - __main__ - Loaded 11 examples from test data
+10/20/2023 18:31:48 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:31:48 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:31:48 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:32:01 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:32:14 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/dev_predictions.json
+10/20/2023 18:32:14 - INFO - __main__ - EM on test data: 0.00
+10/20/2023 18:47:22 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=1, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 18:47:22 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 18:47:22 - INFO - __main__ - Using 4 gpus
+10/20/2023 18:47:23 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 18:47:23 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 18:47:23 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 18:47:26 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 18:47:26 - INFO - __main__ - Loaded 11 examples from test data
+10/20/2023 18:47:28 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 18:47:28 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 18:47:28 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 18:47:41 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 18:48:16 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/dev_predictions.json
+10/20/2023 18:48:17 - INFO - __main__ - EM on test data: 0.00
+10/20/2023 19:10:35 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=1, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 19:10:35 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 19:10:35 - INFO - __main__ - Using 4 gpus
+10/20/2023 19:10:35 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 19:10:35 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 19:10:36 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 19:10:38 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 19:10:39 - INFO - __main__ - Loaded 22 examples from test data
+10/20/2023 19:10:40 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 19:10:40 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 19:10:40 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 19:10:53 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 19:11:30 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/dev_predictions.json
+10/20/2023 19:11:30 - INFO - __main__ - EM on test data: 0.00
+10/20/2023 19:29:12 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=1, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 19:29:12 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 19:29:12 - INFO - __main__ - Using 4 gpus
+10/20/2023 19:29:13 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 19:29:13 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 19:29:13 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 19:29:16 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 19:29:16 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-reverse-BartTokenized.json
+10/20/2023 19:29:16 - INFO - __main__ - Loaded 22 examples from test data
+10/20/2023 19:29:17 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 19:29:17 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 19:29:18 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 19:29:30 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 19:30:04 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/dev_predictions.json
+10/20/2023 19:30:04 - INFO - __main__ - EM on test data: 4.55
+10/20/2023 19:40:51 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=1, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 19:40:51 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 19:40:51 - INFO - __main__ - Using 4 gpus
+10/20/2023 19:40:51 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 19:40:51 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 19:40:53 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 19:40:56 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 19:40:56 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-reverse-BartTokenized.json
+10/20/2023 19:40:56 - INFO - __main__ - Loaded 22 examples from test data
+10/20/2023 19:41:01 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 19:41:01 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 19:41:01 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 19:41:14 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 19:41:48 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/dev_predictions.json
+10/20/2023 19:41:48 - INFO - __main__ - EM on test data: 4.55
+10/20/2023 20:04:57 - INFO - __main__ - Namespace(adam_epsilon=1e-08, append_another_bos=True, checkpoint='/scratch/alif/bart-closed-book-qa/best-model.pt', debug=False, do_lowercase=True, do_predict=True, do_train=False, eval_period=1000, gradient_accumulation_steps=1, learning_rate=1e-05, max_grad_norm=1.0, max_input_length=32, max_output_length=20, num_beams=4, num_train_epochs=10000.0, output_dir='out/nq-bart-closed-qa', predict_batch_size=1, predict_file='data/nqopen-test-reverse.json', prefix='dev_', seed=42, train_batch_size=40, train_file='data/nqopen-train.json', verbose=False, wait_step=10, warmup_proportion=0.01, warmup_steps=0, weight_decay=0.0)
+10/20/2023 20:04:57 - INFO - __main__ - out/nq-bart-closed-qa
+10/20/2023 20:04:57 - INFO - __main__ - Using 4 gpus
+10/20/2023 20:04:58 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-vocab.json from cache at /home/alif/.cache/torch/transformers/1ae1f5b6e2b22b25ccc04c000bb79ca847aa226d0761536b011cf7e5868f0655.ef00af9e673c7160b4d41cfda1f48c5f4cba57d5142754525572a846a1ab1b9b
+10/20/2023 20:04:58 - INFO - transformers.tokenization_utils - loading file https://s3.amazonaws.com/models.huggingface.co/bert/roberta-large-merges.txt from cache at /home/alif/.cache/torch/transformers/f8f83199a6270d582d6245dc100e99c4155de81c9745c6248077018fe01abcfb.70bec105b4158ed9a1747fea67a43f5dee97855c64d62b6ec3742f4cfdb5feda
+10/20/2023 20:04:59 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-train-BartTokenized.json
+10/20/2023 20:05:02 - INFO - __main__ - Loaded 79168 examples from train data
+10/20/2023 20:05:02 - INFO - __main__ - Loading pre-tokenized data from data/nqopen-test-reverse-BartTokenized.json
+10/20/2023 20:05:02 - INFO - __main__ - Loaded 22 examples from test data
+10/20/2023 20:05:06 - INFO - transformers.configuration_utils - loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/facebook/bart-large/config.json from cache at /home/alif/.cache/torch/transformers/7f6632e580b7d9fd4f611dd96dab877cccfc319867b53b8b72fddca7fd64de5c.8b65d3b9a47e96c1909d807f7e7f41dd1ed95092b139965be7b914aa4fb5fd08
+10/20/2023 20:05:06 - INFO - transformers.configuration_utils - Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel",
+    "BartForConditionalGeneration",
+    "BartForSequenceClassification"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "normalize_embedding": true,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "vocab_size": 50265
+}
+
+10/20/2023 20:05:06 - INFO - transformers.modeling_utils - loading weights file https://cdn.huggingface.co/facebook/bart-large/pytorch_model.bin from cache at /home/alif/.cache/torch/transformers/2e7cae41bb1dd1f18e498ff4ff0ea85f7e9bc2b637439e2d95c485c5d5bdd579.5442efe9b99297b6484ff9378cc5af7f47a37d305cbec072c44eb329873e4fe6
+10/20/2023 20:05:19 - INFO - __main__ - Loading checkpoint from out/nq-bart-closed-qa/best-model.pt
+10/20/2023 20:05:53 - INFO - __main__ - Saved prediction in out/nq-bart-closed-qa/dev_predictions.json
+10/20/2023 20:05:53 - INFO - __main__ - EM on test data: 4.55

@@ -1,4 +1,10 @@
 *.ipynb_checkpoints
+outputs/
+core*
+bart/data
+*.pt
+*.zip
+lightning_logs/
 
 .env
 logs/

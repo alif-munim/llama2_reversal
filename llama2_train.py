@@ -23,8 +23,8 @@ lm_causal = AutoModelForCausalLM
 lm_tokenizer = AutoTokenizer
 
 # Model to train from huggingface hub
-# model_name = "meta-llama/Llama-2-7b-hf"
-model_name = "alif-munim/llama2_reversal"
+model_name = "meta-llama/Llama-2-7b-hf"
+# model_name = "alif-munim/llama2_reversal"
 
 # Dataset to train on from huggingface hub
 dataset_name = "lberglund/reversal_curse"
@@ -33,14 +33,6 @@ dataset_name = "lberglund/reversal_curse"
 run_num = 1
 new_model = "alif-munim/llama2_reversal"
 run_name = f'llama2_reversal_v{run_num}'
-
-wandb.init(config={
-    "fine_tuned_model": new_model,
-    "training_files": {
-        "filename": "/scratch/alif/reversal_curse/data/reverse_experiments/june_version_7921032488/all_prompts_train.jsonl"
-    }
-})
-
 
 lora_r = 64 # LoRA attention dimension
 lora_alpha = 16 # Alpha parameter for LoRA scaling
@@ -75,7 +67,7 @@ warmup_ratio = 0.03
 group_by_length = True
 save_steps = 0 # Save checkpoint every X updates steps
 
-logging_steps = 25 # Log every X updates steps
+logging_steps = 5 # Log every X updates steps
 max_seq_length = None
 packing = False # Pack multiple short examples in the same input sequence to increase efficiency
 device_map = {"": 0} # Load the entire model on the GPU 0
